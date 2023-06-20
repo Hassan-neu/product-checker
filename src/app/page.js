@@ -23,18 +23,18 @@ export default function Home() {
             Main
             <Message />
             <Message sender={true} />
-            <Message sender={true} />
+            <Message sender={true} consecMessage />
             <Message />
             <Message sender={true} />
             <Message />
             <Message sender={true} />
-            <Message sender={true} />
-            <Message sender={true} />
+            <Message sender={true} consecMessage />
+            <Message sender={true} consecMessage />
             <Message />
-            <Message />
-            <Message />
-            <Message />
-            <Message />
+            <Message consecMessage />
+            <Message consecMessage />
+            <Message consecMessage />
+            <Message consecMessage />
         </main>
     );
 }

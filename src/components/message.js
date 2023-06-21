@@ -34,11 +34,11 @@ const Message = ({ sender, consecMessage, msg }) => {
                             consecMessage ? "hidden" : ""
                         } `}
                     >
-                        You
+                        Hassan
                     </span>
                 </div>
                 <div
-                    className={`text-sm capitalize text-white text-justify rounded-[15px] px-[1em] py-[.5em] break-all bg-blue-500 ${
+                    className={`text-sm text-white text-justify rounded-[15px] px-[1em] py-[.5em] break-all bg-blue-500 ${
                         sender ? "rounded-tr-[0]" : "rounded-tl-[0] bg-gray-500"
                     } ${consecMessage && sender && "!rounded-tr-[15px] "} ${
                         consecMessage && !sender && "!rounded-tl-[15px] "

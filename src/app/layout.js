@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
     return (
         <html lang="en">
             <body className={inter.className}>
-                <header>
+                <header className="sticky top-0 bg-white z-50">
                     <Header />
                 </header>
                 {children}

@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 
-const Message = ({ sender, consecMessage }) => {
+const Message = ({ sender, consecMessage, msg }) => {
     return (
         <div
             className={`flex flex-row gap-2 w-72 ${
@@ -11,21 +11,21 @@ const Message = ({ sender, consecMessage }) => {
                 ? { "data-mode": "sender" }
                 : { "data-mode": "receiver" })}
         >
-            <div
+            {/* <div
                 className={`w-[35px] h-[35px] flex-grow-0 flex-shrink-0  border-2 border-gray-400 rounded-full flex justify-center items-center text-sm ${
                     consecMessage ? "invisible" : ""
                 }`}
             >
                 U/A
-            </div>
+            </div> */}
             <div
-                className={`flex flex-col gap-1 ${
+                className={`flex flex-col gap-[2px] ${
                     consecMessage ? "flex-col-reverse" : ""
                 }`}
             >
                 <div
-                    className={`text-gray-500 text-xs self-start flex gap-1 ${
-                        sender ? "self-end" : ""
+                    className={`text-gray-500 text-xs flex gap-1 ${
+                        sender ? "self-end" : "self-start flex-row-reverse"
                     }`}
                 >
                     <span>19:30</span>
@@ -38,16 +38,13 @@ const Message = ({ sender, consecMessage }) => {
                     </span>
                 </div>
                 <div
-                    className={`text-sm  text-white text-justify rounded-[20px] px-[1em] py-[.5em] break-all bg-blue-500 ${
+                    className={`text-sm capitalize text-white text-justify rounded-[15px] px-[1em] py-[.5em] break-all bg-blue-500 ${
                         sender ? "rounded-tr-[0]" : "rounded-tl-[0] bg-gray-500"
-                    } ${consecMessage && sender && "!rounded-tr-[20px] "} ${
-                        consecMessage && !sender && "!rounded-tl-[20px] "
+                    } ${consecMessage && sender && "!rounded-tr-[15px] "} ${
+                        consecMessage && !sender && "!rounded-tl-[15px] "
                     } `}
                 >
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Pariatur laboriosam aperiam quis. Laudantium tempora veniam
-                    recusandae ipsa, repudiandae, eum provident quisquam ratione
-                    odit dolores harum mollitia impedit, cum praesentium qui.
+                    {msg}
                 </div>
             </div>
         </div>

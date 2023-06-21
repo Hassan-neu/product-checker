@@ -25,8 +25,7 @@ export default function Home() {
     }, []);
     return (
         <main className="flex min-h-screen flex-col justify-between px-8 gap-4">
-            <div className="self-center">Main</div>
-            <div className="flex h-full flex-col justify-between items-center gap-[6px]">
+            <div className="flex h-full flex-col justify-between gap-[7px]">
                 <Message msg="hi" />
                 <Message sender={true} msg="hello" />
                 <Message sender={true} consecMessage msg="how are you doing" />

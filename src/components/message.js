@@ -38,13 +38,11 @@ const Message = ({ sender, consecMessage }) => {
                     </span>
                 </div>
                 <div
-                    className={`text-sm text-justify rounded-[20px] px-[1em] py-[.5em] break-all ${
-                        sender
-                            ? "rounded-tr-none bg-blue-500 text-white"
-                            : "rounded-tl-none bg-gray-500 text-white"
-                    } 
-                        ${consecMessage && "rounded-tr-[20px]"} 
-                          ${consecMessage && !sender && "rounded-tl-[20px]"}  `}
+                    className={`text-sm  text-white text-justify rounded-[20px] px-[1em] py-[.5em] break-all bg-blue-500 ${
+                        sender ? "rounded-tr-[0]" : "rounded-tl-[0] bg-gray-500"
+                    } ${consecMessage && sender && "!rounded-tr-[20px] "} ${
+                        consecMessage && !sender && "!rounded-tl-[20px] "
+                    } `}
                 >
                     Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                     Pariatur laboriosam aperiam quis. Laudantium tempora veniam

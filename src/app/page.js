@@ -28,7 +28,7 @@ export default function Home() {
             <div className="flex h-full flex-col justify-between gap-[7px]">
                 <Message msg="hi" />
                 <Message sender={true} msg="hello" />
-                <Message sender={true} consecMessage msg="how are you doing" />
+                <Message sender={true} consecMessage msg="how are you doing?" />
                 <Message msg="i'm good" />
                 <Message sender={true} msg="that's nice" />
                 <Message msg="promise me this i just between us" />
@@ -65,6 +65,7 @@ export default function Home() {
                     sender={true}
                     msg="i'll get back to you when i'm done"
                 />
+                <Message msg="  Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia hic minima impedit sit atque architecto cupiditate, ullam, commodi autem velit qui distinctio quas ex amet pariatur maxime fugit numquam ducimus? Reiciendis explicabo eos obcaecati voluptatum magni voluptates dolore asperiores aut." />
                 <div ref={view} className="h-20 w-full">
                     {" "}
                 </div>

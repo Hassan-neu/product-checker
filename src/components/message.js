@@ -4,7 +4,7 @@ import React from "react";
 const Message = ({ sender, consecMessage, msg }) => {
     return (
         <div
-            className={`flex flex-row gap-2 w-72 ${
+            className={`flex flex-row gap-2 w-full ${
                 sender ? "flex-row-reverse self-end" : ""
             }`}
             {...(sender

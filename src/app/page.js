@@ -1,9 +1,13 @@
-"use client";
+// "use client";
 import Image from "next/image";
 import Message from "@/components/message";
+import SignIn from "@/components/signin";
+import Chat from "@/components/chat";
 import Input from "@/components/messageInput";
-import { useState, useEffect, useRef } from "react";
-export default function Home() {
+import { AuthOptions } from "@/libs/auth";
+import { getServerSession } from "next-auth";
+// import { useState, useEffect, useRef } from "react";
+export default async function Home() {
     // const [consecMessage, setConsecMessage] = useState(false);
     // const main = useRef();
     // useEffect(() => {
@@ -19,14 +23,14 @@ export default function Home() {
     //         }
     //     }
     // }, [consecMessage]);
-    const view = useRef();
-    useEffect(() => {
-        view.current.scrollIntoView({ behaviour: "smooth" });
-    }, []);
+    const session = await getServerSession(AuthOptions);
+    console.log(session);
     return (
-        <main className="flex min-h-screen flex-col justify-between px-8 gap-4">
+        <main className="flex h-screen min-h-screen flex-col justify-between px-8 gap-4">
             <div className="flex h-full flex-col justify-between gap-[7px]">
-                <Message msg="hi" />
+                {session ? <Chat /> : <SignIn />}
+
+                {/* <Message msg="hi" />
                 <Message sender={true} msg="hello" />
                 <Message sender={true} consecMessage msg="how are you doing?" />
                 <Message msg="i'm good" />
@@ -68,7 +72,7 @@ export default function Home() {
                 <Message msg="  Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia hic minima impedit sit atque architecto cupiditate, ullam, commodi autem velit qui distinctio quas ex amet pariatur maxime fugit numquam ducimus? Reiciendis explicabo eos obcaecati voluptatum magni voluptates dolore asperiores aut." />
                 <div ref={view} className="h-20 w-full">
                     {" "}
-                </div>
+                </div> */}
             </div>
             <Input />
         </main>

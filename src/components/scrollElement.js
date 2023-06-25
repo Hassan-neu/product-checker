@@ -7,7 +7,7 @@ const ScrollElement = () => {
         view.current.scrollIntoViewIfNeeded({ behaviour: "smooth" });
     }, []);
     return (
-        <div ref={view} className="h-20 w-full">
+        <div ref={view} className="h-28 w-full">
             {" "}
         </div>
     );

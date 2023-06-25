@@ -4,7 +4,7 @@ import { useState } from "react";
 const Input = () => {
     const [text, setText] = useState("");
     const sendMessage = async () => {
-        await fetch("http://localhost:3000/api/sendmessage", {
+        await fetch("http://localhost:3000/api/messages", {
             method: "POST",
             body: JSON.stringify({ text }),
         });

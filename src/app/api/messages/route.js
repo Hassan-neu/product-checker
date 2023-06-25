@@ -29,3 +29,8 @@ export async function POST(req) {
     });
     return new Response(JSON.stringify(messages), { status: 201 });
 }
+
+export async function GET(req) {
+    const messages = await prisma.messages.findMany();
+    return new Response(JSON.stringify(messages), { status: 200 });
+}

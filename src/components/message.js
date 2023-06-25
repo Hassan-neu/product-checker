@@ -1,12 +1,12 @@
 "use client";
 import React from "react";
-const Message = ({ message, session }) => {
-    const { text, userId, createdAt } = message;
+const Message = ({ message, session, consecMessage }) => {
+    const { text, userId, createdAt, userName } = message;
     const {
-        user: { id, name },
+        user: { id },
     } = session;
     const isSender = userId === id;
-    console.log({ isSender, id });
+    // console.log({ isSender, id });
     return (
         <div
             className={`flex flex-row gap-2 w-full ${
@@ -16,7 +16,11 @@ const Message = ({ message, session }) => {
                 ? { "data-mode": "sender" }
                 : { "data-mode": "received" })}
         >
-            <div className={`flex flex-col gap-[2px]`}>
+            <div
+                className={`flex flex-col gap-[2px] ${
+                    consecMessage ? "flex-col-reverse" : ""
+                }`}
+            >
                 <div
                     className={`text-gray-500 text-xs flex gap-1 ${
                         isSender ? "self-end" : "self-start flex-row-reverse"
@@ -30,10 +34,26 @@ const Message = ({ message, session }) => {
                             .join(":")
                             .toString()}
                     </span>
-                    <span className={`font-semibold`}>hmmm</span>
+                    <span
+                        className={`font-semibold ${
+                            consecMessage ? "hidden" : ""
+                        }`}
+                    >
+                        {userName.split(" ")[0]}
+                    </span>
                 </div>
                 <div
-                    className={`text-sm text-white  rounded-[15px] px-[1em] py-[.5em] bg-blue-500  `}
+                    className={`text-sm text-white  rounded-[15px] px-[1em] py-[.5em] bg-blue-500  ${
+                        isSender
+                            ? "rounded-tr-[0]"
+                            : "rounded-tl-[0] bg-gray-500"
+                    } ${consecMessage && isSender ? "!rounded-tr-[15px]" : ""}
+                        ${
+                            consecMessage && !isSender
+                                ? "!rounded-tl-[15px]"
+                                : ""
+                        }
+                    `}
                 >
                     {text}
                 </div>

@@ -14,7 +14,7 @@ export async function POST(req) {
             email: session.user.email,
         },
     });
-    console.log(user);
+    // console.log(user);
     if (!user) {
         return new Response(JSON.stringify({ message: "No user sesssion" }), {
             status: 404,
@@ -24,6 +24,7 @@ export async function POST(req) {
     const messages = await prisma.messages.create({
         data: {
             text,
+            userName: user.name,
             userId: user.id,
         },
     });

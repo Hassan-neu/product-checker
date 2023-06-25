@@ -1,12 +1,21 @@
 "use client";
-import React from "react";
-const Message = ({ message, session, consecMessage }) => {
+import React, { useEffect } from "react";
+import { useState, useRef } from "react";
+const Message = ({ message, session }) => {
+    const main = useRef();
+    const [consecMessage, setConsecMessage] = useState(false);
     const { text, userId, createdAt, userName } = message;
     const {
         user: { id },
     } = session;
     const isSender = userId === id;
-    // console.log({ isSender, id });
+    useEffect(() => {
+        const prevSibling = main.current.previousElementSibling;
+        if (prevSibling) {
+            if (main.current.dataset.mode === prevSibling.dataset.mode)
+                setConsecMessage(true);
+        }
+    }, [consecMessage]);
     return (
         <div
             className={`flex flex-row gap-2 w-full ${
@@ -15,6 +24,7 @@ const Message = ({ message, session, consecMessage }) => {
             {...(isSender
                 ? { "data-mode": "sender" }
                 : { "data-mode": "received" })}
+            ref={main}
         >
             <div
                 className={`flex flex-col gap-[2px] ${
@@ -43,7 +53,7 @@ const Message = ({ message, session, consecMessage }) => {
                     </span>
                 </div>
                 <div
-                    className={`text-sm text-white  rounded-[15px] px-[1em] py-[.5em] bg-blue-500  ${
+                    className={`text-sm text-white flex items-center rounded-[15px] px-[1em] py-[.5em] bg-blue-500  ${
                         isSender
                             ? "rounded-tr-[0]"
                             : "rounded-tl-[0] bg-gray-500"

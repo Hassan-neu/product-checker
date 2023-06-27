@@ -14,7 +14,7 @@ export default async function RootLayout({ children }) {
     const session = await getServerSession(AuthOptions);
     return (
         <html lang="en">
-            <body className={inter.className}>
+            <body className={`${inter.className} max-w-2xl mx-auto relative`}>
                 <header className="sticky top-0 bg-white z-50">
                     <Header session={session} />
                 </header>

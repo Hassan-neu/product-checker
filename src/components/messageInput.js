@@ -15,24 +15,25 @@ const Input = () => {
         setText("");
     };
     return (
-        <div className="fixed bottom-0 left-0 w-full px-8 bg-white">
+        <div className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-2xl px-8 bg-white">
             <form className="flex items-center my-3 py-2 px-4 justify-center gap-2 w-full rounded-full bg-gray-200">
                 <TextareaAutosize
-                    onKeyUp={(e) => {
+                    onKeyDown={(e) => {
                         if (e.key === "Enter" && text !== " ") {
+                            e.preventDefault();
                             sendMessage();
                         }
                     }}
                     rows={1}
-                    maxRows={3}
+                    maxRows={2}
                     value={text}
                     onChange={(e) => setText(e.target.value)}
                     placeholder="Type a message"
-                    className="resize-none focus:outline-none text-sm w-full rounded-full scrollbar-thumb-gray-500 scrollbar scrollbar-thumb-rounded-full scrollbar-w-1 bg-inherit"
+                    className="px-2 py-1 resize-none focus:outline-none text-sm w-full scrollbar-thumb-gray-500 scrollbar scrollbar-thumb-rounded-full scrollbar-w-1 bg-transparent"
                 />
                 <button
                     type="submit"
-                    className="flex justify-center items-center shrink-0 text-gray-500 active:scale-95"
+                    className="flex justify-center items-center self-end shrink-0 text-gray-500 active:scale-95"
                     onClick={(e) => {
                         e.preventDefault();
                         sendMessage();

@@ -1,9 +1,11 @@
 "use client";
+import { pusherClient } from "@/libs/pusher";
 import React, { useEffect } from "react";
 import { useState, useRef } from "react";
 const Message = ({ message, session }) => {
     const main = useRef();
     const [consecMessage, setConsecMessage] = useState(false);
+    // const [data, setData] = useState("");
     const { text, userId, createdAt, userName } = message;
     const {
         user: { id },
@@ -53,7 +55,7 @@ const Message = ({ message, session }) => {
                     </span>
                 </div>
                 <div
-                    className={`text-sm text-white flex items-center rounded-[15px] px-[1em] py-[.5em] bg-blue-500  ${
+                    className={`text-sm text-white flex items-center rounded-[15px] px-[1em] py-[.5em] bg-blue-500 ${
                         isSender
                             ? "rounded-tr-[0]"
                             : "rounded-tl-[0] bg-gray-500"

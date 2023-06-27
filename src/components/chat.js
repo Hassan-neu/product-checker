@@ -1,11 +1,20 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import Message from "./message";
-const Chat = async ({ session }) => {
-    const res = await fetch("http://localhost:3000/api/messages", {
-        method: "GET",
-        cache: "no-store",
-    });
-    const messages = await res.json();
+import { pusherClient } from "@/libs/pusher";
+const Chat = ({ session }) => {
+    const [messages, setMessages] = useState([]);
+    useEffect(() => {
+        pusherClient.subscribe("messages");
+        pusherClient.bind("messages:new", (message) => {
+            setMessages((prevMessages) => [...prevMessages, message]);
+        });
+        return () => {
+            pusherClient.unsubscribe("messages");
+            pusherClient.unbind("messages:new");
+        };
+    }, [messages]);
+
     return (
         <div className="flex h-full flex-col justify-between gap-[7px]">
             {messages.map((message) => (

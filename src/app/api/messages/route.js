@@ -1,7 +1,7 @@
 import prisma from "@/libs/prismaClient";
 import { AuthOptions } from "@/libs/auth";
 import { getServerSession } from "next-auth";
-
+import { pusherServer } from "@/libs/pusher";
 export async function POST(req) {
     const session = await getServerSession(AuthOptions);
     if (!session) {
@@ -28,6 +28,7 @@ export async function POST(req) {
             userId: user.id,
         },
     });
+    await pusherServer.trigger("messages", "messages:new", messages);
     return new Response(JSON.stringify(messages), { status: 201 });
 }
 

@@ -18,7 +18,7 @@ const Message = ({ message, session }) => {
     }, [consecMessage]);
     return (
         <div
-            className={`flex flex-row gap-2 w-full ${
+            className={`flex flex-row gap-2 max-w-full w-3/4 ${
                 isSender ? "flex-row-reverse self-end" : ""
             }`}
             {...(isSender

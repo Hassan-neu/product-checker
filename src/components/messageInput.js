@@ -16,22 +16,25 @@ const Input = () => {
         setText(" ");
     };
     return (
-        <form className="flex items-center py-3 px-8 justify-center gap-2 w-full bg-white fixed bottom-0 left-0">
-            <TextareaAutosize
-                rows={1}
-                maxRows={3}
-                value={text}
-                onChange={(e) => setText(e.target.value)}
-                className="py-2 px-4 border-2 border-gray-500 resize-none focus:outline-none text-sm w-full rounded-lg scrollbar-thumb-gray-500 scrollbar scrollbar-thumb-rounded-full scrollbar-w-1"
-            />
-            <button
-                type="submit"
-                className="rounded-full flex justify-center items-center self-end shrink-0 text-blue-500 active:scale-95"
-                onClick={sendMessage}
-            >
-                <AiOutlineSend size={30} />
-            </button>
-        </form>
+        <div className="fixed bottom-0 left-0 w-full px-8 bg-white">
+            <form className="flex items-center my-3 py-2 px-4 justify-center gap-2 w-full rounded-full bg-gray-200">
+                <TextareaAutosize
+                    rows={1}
+                    maxRows={3}
+                    value={text}
+                    onChange={(e) => setText(e.target.value)}
+                    placeholder="Type a message"
+                    className="resize-none focus:outline-none text-sm w-full rounded-full scrollbar-thumb-gray-500 scrollbar scrollbar-thumb-rounded-full scrollbar-w-1 bg-inherit"
+                />
+                <button
+                    type="submit"
+                    className="flex justify-center items-center shrink-0 text-gray-500 active:scale-95"
+                    onClick={sendMessage}
+                >
+                    <AiOutlineSend size={25} />
+                </button>
+            </form>
+        </div>
     );
 };
 

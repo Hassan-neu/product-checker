@@ -2,8 +2,11 @@
 import React, { useEffect, useState } from "react";
 import Message from "./message";
 import { pusherClient } from "@/libs/pusher";
-const Chat = ({ session }) => {
+const Chat = ({ session, msg }) => {
     const [messages, setMessages] = useState([]);
+    useEffect(() => {
+        setMessages(msg);
+    }, [msg]);
     useEffect(() => {
         pusherClient.subscribe("messages");
         pusherClient.bind("messages:new", (message) => {

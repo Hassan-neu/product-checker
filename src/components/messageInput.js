@@ -4,7 +4,7 @@ import TextareaAutosize from "react-textarea-autosize";
 import { useState } from "react";
 import { AiOutlineSend } from "react-icons/ai";
 const Input = () => {
-    const [text, setText] = useState("");
+    const [text, setText] = useState(" ");
     const sendMessage = async () => {
         if (text === " ") return;
         await fetch("http://localhost:3000/api/messages", {
@@ -13,6 +13,7 @@ const Input = () => {
             body: JSON.stringify({ text }),
         });
         setText("");
+        window.scrollTo(0, document.body.scrollHeight);
     };
     return (
         <div className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-2xl px-8 bg-white">

@@ -8,7 +8,6 @@ export default async function Home() {
     const session = await getServerSession(AuthOptions);
     const res = await fetch("http://localhost:3000/api/messages", {
         method: "GET",
-        cache: "no-store",
     });
     const messages = await res.json();
     return (

@@ -4,7 +4,7 @@ import { useRef, useEffect } from "react";
 const ScrollElement = () => {
     const view = useRef();
     useEffect(() => {
-        view.current.scrollIntoView({ behaviour: "smooth" });
+        view.current.scrollIntoView();
     }, []);
     return (
         <div ref={view} className="h-28 w-full">
